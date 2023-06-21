@@ -20,7 +20,7 @@ const RandomUserTwo = () => {
       setData(data.results);
     };
     fetchUser();
-  }, []);
+  }, [searchWord]);
 
   useEffect(() => {
     localStorage.setItem("user", searchWord);
@@ -31,7 +31,8 @@ const RandomUserTwo = () => {
       console.log("i am running");
       setNum((prevNum) => (prevNum === 3 ? 0 : prevNum + 1));
     }, 7000);
-    colorInterval();
+    
+    return () => clearInterval(colorInterval);
   }, []);
 
   return (
